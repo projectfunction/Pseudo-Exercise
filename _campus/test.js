@@ -9,9 +9,9 @@
 async function untilReady() {
 	let isCancelled = false;
 	return new Promise(resolve => {
-		let timeout = setTimeout(()=>{
+		let interval = setInterval(()=>{
 			if (window.isEnvironmentReady || isCancelled){
-				clearTimeout(timeout);
+				clearInterval(interval);
 				resolve();
 			}
 		}, 200);
