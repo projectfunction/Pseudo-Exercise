@@ -17,6 +17,7 @@ async function untilReady() {
 		}, 200);
 
 		setTimeout(()=>{
+			console.log('cancelling ready');
 			isCancelled = true;
 		}, 5_000);
 	});
