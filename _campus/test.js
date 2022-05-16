@@ -22,6 +22,12 @@ async function untilReady() {
 	});
 }
 
+describe("View window", async () => {
+	await untilReady();
+	console.log('meta', window.meta);
+	expect(window.meta).to.equal(3);
+});
+
 await describe("must have at least 5 frames", async ()=>{
 	await untilReady();
 	expect(window.frameInstructions).to.be.above(4);
