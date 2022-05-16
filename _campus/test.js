@@ -18,16 +18,16 @@ async function untilReady() {
 
 		setTimeout(()=>{
 			isCancelled = true;
-		}, 10_000);
+		}, 5_000);
 	});
 }
 
-describe("must have at least 5 frames", async ()=>{
+await describe("must have at least 5 frames", async ()=>{
 	await untilReady();
 	expect(window.frameInstructions).to.be.above(4);
 });
 
-describe("framerate must not exceed 30 FPS", async ()=>{
+await describe("framerate must not exceed 30 FPS", async ()=>{
 	await untilReady();
 	expect(window.framesPerSecond).to.be.below(31)
 });
