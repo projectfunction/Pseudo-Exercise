@@ -8,10 +8,10 @@ const DPI = window.devicePixelRatio;
 // create rendering context - we use this to draw to the canvas;
 const drawingContext = canvas.getContext("2d");
 
-let frameInstructions = [];
-let framesPerSecond = 1;
-let currentFrameIndex = 0;
-let canvasVars = {};
+window.frameInstructions = [];
+window.framesPerSecond = 1;
+window.currentFrameIndex = 0;
+window.canvasVars = {};
 
 function resetCanvasSize(){
     const canvasContainerStyles = window.getComputedStyle(canvasContainer);
