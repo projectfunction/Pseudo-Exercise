@@ -22,18 +22,14 @@ async function untilReady() {
 	});
 }
 
-describe("View window", async () => {
-	await untilReady();
-	console.log('meta', window.meta);
-	expect(window.meta).to.equal(3);
-});
+await untilReady();
 
-await describe("must have at least 5 frames", async ()=>{
-	await untilReady();
+describe("must have at least 5 frames", ()=>{
 	expect(window.frameInstructions).to.be.above(4);
 });
 
-await describe("framerate must not exceed 30 FPS", async ()=>{
-	await untilReady();
+describe("framerate must not exceed 30 FPS", ()=>{
 	expect(window.framesPerSecond).to.be.below(31)
 });
+
+console.log(window);
