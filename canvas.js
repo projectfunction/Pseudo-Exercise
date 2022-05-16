@@ -12,6 +12,7 @@ window.frameInstructions = [];
 window.framesPerSecond = 1;
 window.currentFrameIndex = 0;
 window.canvasVars = {};
+window.meta = { envReady: false };
 
 function resetCanvasSize(){
     const canvasContainerStyles = window.getComputedStyle(canvasContainer);
