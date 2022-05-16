@@ -6,29 +6,19 @@
  * License: MIT
  */
 
-async function untilReady() {
-	let isCancelled = false;
-	return new Promise(resolve => {
-		let interval = setInterval(()=>{
-			if (window.isEnvironmentReady || isCancelled){
-				clearInterval(interval);
-				resolve();
-			}
-		}, 200);
-
-		setTimeout(()=>{
-			console.log('cancelling ready');
-			isCancelled = true;
-		}, 5_000);
-	});
+function countInstances(string, word) {
+	return string.split(word).length - 1;
 }
 
-await untilReady();
+const code = document.getElementById('user-code').innerText;
 
 describe("must have at least 5 frames", ()=>{
-	expect(window.frameInstructions).to.be.above(4);
+	expect(countInstances(code, 'new frame')).to.be.above(4);
 });
 
 describe("framerate must not exceed 30 FPS", ()=>{
-	expect(window.framesPerSecond).to.be.below(31)
+	const fps = code.split('\n')
+		.filter(line => line.trim().startsWith('config fps'))?.[0]?.toLowerCase()
+		.split('config fps')[1] ?? '1';
+	expect(parseFloat(fps)).to.be.below(31)
 });
