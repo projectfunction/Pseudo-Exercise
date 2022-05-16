@@ -31,5 +31,3 @@ describe("must have at least 5 frames", ()=>{
 describe("framerate must not exceed 30 FPS", ()=>{
 	expect(window.framesPerSecond).to.be.below(31)
 });
-
-console.log(window);
