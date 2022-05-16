@@ -10,7 +10,7 @@ function countInstances(string, word) {
 	return string.split(word).length - 1;
 }
 
-const code = document.getElementById('user-code').innerText;
+const code = thor.document.getElementById('user-code').innerText;
 
 describe("must have at least 5 frames", ()=>{
 	expect(countInstances(code, 'new frame')).to.be.above(4);
