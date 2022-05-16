@@ -25,13 +25,13 @@ function resetCanvasSize(){
 }
 
 function renderFrames(){
-    if (frameInstructions.length > 0){
-        if (currentFrameIndex + 1 >= frameInstructions.length) currentFrameIndex = 0;
-        else currentFrameIndex ++;
+    if (window.frameInstructions.length > 0){
+        if (window.currentFrameIndex + 1 >= window.frameInstructions.length) window.currentFrameIndex = 0;
+        else window.currentFrameIndex ++;
 
-        const canvasVariables = canvasVars;
+        const canvasVariables = window.canvasVars;
 
-        let lines = frameInstructions[currentFrameIndex];
+        let lines = window.frameInstructions[window.currentFrameIndex];
 
         triggerEvent('PSEUDO', {stage:'beforeRun', variables:takeSnapshot(canvasVariables)});
 
@@ -129,7 +129,7 @@ function renderFrames(){
 }
 
 function startAnimation(){
-    setTimeout(renderFrames, 1000 / framesPerSecond)
+    setTimeout(renderFrames, 1000 / window.framesPerSecond)
 }
 
 function updateCanvasFrames(){
@@ -138,9 +138,9 @@ function updateCanvasFrames(){
 
     const { canvasVariables, frames } = convertUserInputToDrawingInstructions(code.innerText);
 
-    canvasVars = canvasVariables;
-    frameInstructions = frames;
-    framesPerSecond = canvasVariables.fps;
+    window.canvasVars = canvasVariables;
+    window.frameInstructions = frames;
+    window.framesPerSecond = canvasVariables.fps;
 
     document.getElementById('fps-indicator').innerText = `${canvasVariables.fps} FPS`;
 }

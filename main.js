@@ -1,5 +1,6 @@
 
-//
-// window.addEventListener('PSEUDO', event => {
-// 	console.log(event, event.detail);
-// });
+window.addEventListener('PSEUDO', event => {
+	if (event.detail.stage === 'afterRun') {
+		window.isEnvironmentReady = true;
+	}
+});

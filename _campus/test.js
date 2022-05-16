@@ -6,10 +6,28 @@
  * License: MIT
  */
 
-describe("must have at least 5 frames", ()=>{
+async function untilReady() {
+	let isCancelled = false;
+	return new Promise(resolve => {
+		let timeout = setTimeout(()=>{
+			if (window.isEnvironmentReady || isCancelled){
+				clearTimeout(timeout);
+				resolve();
+			}
+		}, 200);
+
+		setTimeout(()=>{
+			isCancelled = true;
+		}, 10_000);
+	});
+}
+
+describe("must have at least 5 frames", async ()=>{
+	await untilReady();
 	expect(window.frameInstructions).to.be.above(4);
 });
 
-describe("framerate must not exceed 30 FPS", ()=>{
+describe("framerate must not exceed 30 FPS", async ()=>{
+	await untilReady();
 	expect(window.framesPerSecond).to.be.below(31)
 });
