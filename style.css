@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+
+    background: #282828;
+    z-index: -1;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+#canvas-container {
+    width: calc(100vh - 2rem);
+    aspect-ratio: 1 / 1;
+    border: 1px solid gray;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+#fps-indicator {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1rem;
+    color: white;
+    font-family: sans-serif;
+}
